@@ -1,0 +1,30 @@
+{
+	"folders":
+	[
+		{
+			"path": ".",
+			"folder_exclude_patterns": [".bmx", ".gradle"],
+			"file_exclude_patterns": ["*.i", "*.sublime-workspace"]
+		}
+	],
+	"build_systems": [
+		{
+			"name": "Gradle: Build muttley.stack Module",
+			"cmd": ["gradle", "--daemon", "build_module"],
+			"working_dir": "${project_path}/stack.mod",
+			"shell": "true"
+		},
+		{
+			"name": "Gradle: Run muttley.stack Module Example",
+			"cmd": ["gradle", "--daemon", "run_examples"],
+			"working_dir": "${project_path}/stack.mod",
+			"shell": "true"
+		},
+		{
+			"name": "Gradle: Run muttley.stack Module Tests",
+			"cmd": ["gradle", "--daemon", "run_tests"],
+			"working_dir": "${project_path}/stack.mod",
+			"shell": "true"
+		}
+	]
+}
