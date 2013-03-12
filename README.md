@@ -45,7 +45,7 @@ the [Gradle][2] build automation system.
 
 #License
 
-Copyright (c) 2009-2013 Paul Maskelyne [<muttley@muttleyville.org>][3].
+Copyright (c) 2009-2013 Paul Maskelyne ([muttley@muttleyville.org][3]).
 
 All rights reserved. Use of this code is allowed under the
 Artistic License 2.0 terms, as specified in the LICENSE file
