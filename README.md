@@ -2,10 +2,6 @@
 
 This module implements an array-based stack data structure.
 
-#Dependencies
-
-This module requires the [muttley.stack][1] module.
-
 #Installation
 
 To install this module, copy the **stack.mod** directory into a folder
@@ -41,23 +37,22 @@ follows:
 
 #Sublime Project
 
-For [Sublime Text 2][2] users there is a project file which can be used
+For [Sublime Text 2][1] users there is a project file which can be used
 if you wish modify this module in any way.  The project file includes
 build systems for building the module, and building and running both
 the Unit Tests and Example application.  These build systems rely on
-the [Gradle][3] build automation system.
+the [Gradle][2] build automation system.
 
 #License
 
-Copyright (c) 2009-2013 Paul Maskelyne [<muttley@muttleyville.org>][4].
+Copyright (c) 2009-2013 Paul Maskelyne [<muttley@muttleyville.org>][3].
 
 All rights reserved. Use of this code is allowed under the
 Artistic License 2.0 terms, as specified in the LICENSE file
 distributed with this code, or available from
-[http://www.opensource.org/licenses/artistic-license-2.0.php][5]
+[http://www.opensource.org/licenses/artistic-license-2.0.php][4]
 
-[1]: https://bitbucket.org/muttley/muttley.stack
-[2]: http://www.sublimetext.com/
-[3]: http://www.gradle.org/
-[4]: mailto:muttley@muttleyville.org
-[5]: http://www.opensource.org/licenses/artistic-license-2.0.php
+[1]: http://www.sublimetext.com/
+[2]: http://www.gradle.org/
+[3]: mailto:muttley@muttleyville.org
+[4]: http://www.opensource.org/licenses/artistic-license-2.0.php

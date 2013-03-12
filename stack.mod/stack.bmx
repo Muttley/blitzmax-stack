@@ -16,13 +16,15 @@ Rem
 End Rem
 Module muttley.stack
 
-ModuleInfo "Version: 1.0.5"
+ModuleInfo "Version: 1.0.6"
 ModuleInfo "License: Artistic License 2.0"
 ModuleInfo "Author: Paul Maskelyne (Muttley)"
 ModuleInfo "Copyright: (c) 2009-2013 Paul Maskelyne"
 ModuleInfo "E-Mail: muttley@muttleyville.org"
 ModuleInfo "Website: http://www.muttleyville.org"
 
+ModuleInfo "History: 1.0.6"
+ModuleInfo "History: Fixed documentation issue"
 ModuleInfo "History: 1.0.5"
 ModuleInfo "History: Code tidy and migration to Bitbucket"
 ModuleInfo "History: 1.0.4"
