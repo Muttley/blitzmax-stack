@@ -47,13 +47,9 @@ DisplayStackSize (stack)
 
 Function DisplayStackSize (stack:TStack)
 	Print "Stack size: " + stack.GetSize()
-End Function
+EndFunction
 
-Rem
-'
 ' Test Data
-'
-EndRem
 #ExampleData
 DefData "John", 37
 DefData "Susan", 42

@@ -8,62 +8,62 @@ Type TStackTests Extends TTest
 
 	Method Setup() {before}
 		_stack = TStack.Create (INITIAL_STACK_SIZE, INITIAL_GROW_SIZE)
-	End Method
+	EndMethod
 
 
 
 	Method CanInstantiateStack() {test}
 		assertNotNull (New TStack)
-	End Method
+	EndMethod
 
 
 
 	Method CanCreateStackWithPositiveSize() {test}
 		assertNotNull (TStack.Create (1))
-	End Method
+	EndMethod
 
 
 
 	Method StackIsCreatedWithCorrectSize() {test}
 		assertEqualsI (_stack.GetSize(), INITIAL_STACK_SIZE)
-	End Method
+	EndMethod
 
 
 
 	Method StackIsCreatedWithCorrectGrowSize() {test}
 		assertEqualsI (_stack._growSize, 5)
-	End Method
+	EndMethod
 
 
 
 	Method CannotCreateStackWithNegativeSize() {test}
 		assertNull (TStack.Create (-10))
-	End Method
+	EndMethod
 
 
 
 	Method CannotCreateStackWithNegativeGrowSize() {test}
 		assertNull (TStack.Create (INITIAL_STACK_SIZE, -5))
-	End Method
+	EndMethod
 
 
 
 	Method CanPushObject() {test}
 		_stack.Push (New TStack)
-	End Method
+	EndMethod
 
 
 
 	Method CanPopObject() {test}
 		_stack.Push (New TStack)
 		assertNotNull (_stack.Pop())
-	End Method
+	EndMethod
 
 
 
 	Method CannotPopEmptyStack() {test}
 		assertNull (_stack.Pop())
-	End Method
+	EndMethod
 
 
 
@@ -71,10 +71,10 @@ Type TStackTests Extends TTest
 		Local o:Object
 		For Local i:Int = 0 Until INITIAL_STACK_SIZE
 			o = New TStack
-			_stack.Push(o)
+			_stack.Push (o)
 		Next
 		assertEquals (o, _stack.Pop())
-	End Method
+	EndMethod
 
 
 
@@ -82,10 +82,10 @@ Type TStackTests Extends TTest
 		Local o:Object
 		For Local i:Int = 0 To _stack.GetSize() + 10
 			o = New TStack
-			_stack.Push(o)
+			_stack.Push (o)
 		Next
 		assertEquals (o, _stack.Pop())
-	End Method
+	EndMethod
 
 
 
@@ -96,7 +96,7 @@ Type TStackTests Extends TTest
 			_stack.Push (o)
 		Next
 		assertTrue (INITIAL_STACK_SIZE < _stack.GetSize())
-	End Method
+	EndMethod
 
 
 
@@ -107,7 +107,7 @@ Type TStackTests Extends TTest
 			_stack.Push (o)
 		Next
 		assertEqualsI (INITIAL_STACK_SIZE + INITIAL_GROW_SIZE, _stack.GetSize())
-	End Method
+	EndMethod
 
 
 
@@ -115,13 +115,13 @@ Type TStackTests Extends TTest
 		Local o:Object = New TStack
 		_stack.Push (o)
 		assertEquals (o, _stack.Peek())
-	End Method
+	EndMethod
 
 
 
 	Method CannotPeekFromEmptyStack() {test}
 		assertNull (_stack.Peek())
-	End Method
+	EndMethod
 
 
 
@@ -136,7 +136,7 @@ Type TStackTests Extends TTest
 		For Local i:Int = INITIAL_STACK_SIZE - 1 To 0 Step - 1
 			assertEquals (objects[i], _stack.Pop())
 		Next
-	End Method
+	EndMethod
 
 
 
@@ -145,7 +145,7 @@ Type TStackTests Extends TTest
 		Local o:Object = New TStack
 		myStack.Push (o)
 		assertEquals (o, myStack.Pop())
-	End Method
+	EndMethod
 
 
 
@@ -157,7 +157,7 @@ Type TStackTests Extends TTest
 		For Local i:Int = 0 Until INITIAL_STACK_SIZE
 			assertNull (_stack._stackArray[i])
 		Next
-	End Method
+	EndMethod
 
 
 
@@ -171,14 +171,14 @@ Type TStackTests Extends TTest
 		_stack.Shrink()
 
 		assertEqualsI (INITIAL_STACK_SIZE, _stack.GetSize())
-	End Method
+	EndMethod
 
 
 
 	Method CanShrinkEmptyStack() {test}
 		Local stack:TStack = New TStack
 		stack.Shrink()
-	End Method
+	EndMethod
 
 
 
@@ -187,13 +187,13 @@ Type TStackTests Extends TTest
 		stack.Shrink()
 		stack.Push (New TStack)
 		assertNotNull (stack.Pop())
-	End Method
+	EndMethod
 
 
 
 	Method CanCountEntriesOnStack() {test}
 		_stack.GetCount()
-	End Method
+	EndMethod
 
 
 
@@ -205,6 +205,6 @@ Type TStackTests Extends TTest
 			_stack.Pop()
 		Next
 		assertEqualsI (17, _stack.GetCount())
-	End Method
+	EndMethod
 
-End Type
+EndType
