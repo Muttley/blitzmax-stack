@@ -28,25 +28,25 @@ Type TStack
 	Field _top:Int
 
 
-	rem
+	Rem
 		bbdoc: Clears the stack
 		about: The stack will remain the same size after it has been cleared, use
 		the Shrink() method to reduce its size
-	endrem
+	EndRem
 	Method Clear()
 		For Local i:Int = 0 Until _stackArray.Length
 			_stackArray[i] = Null
 		Next
 		_top = -1
-	End Method
+	EndMethod
 
 
 
-	rem
+	Rem
 		bbdoc: Create a Stack with the specified initial and grow sizes
 		about: If more objects are pushed to the stack than it can hold, it will
 		automatically grow by the size you specify
-	endrem
+	EndRem
 	Function Create:TStack (size:Int, growSize:Int = 1)
 		If size < 0 Or growSize < 0 Then Return Null
 
@@ -57,51 +57,51 @@ Type TStack
 		stack._growSize    = growSize
 
 		Return stack
-	End Function
+	EndFunction
 
 
 
-	rem
+	Rem
 		bbdoc: Returns the number of objects on the stack
-	endrem
+	EndRem
 	Method GetCount:Int()
 		Return _top + 1
-	End Method
+	EndMethod
 
 
 
-	rem
+	Rem
 		bbdoc: Returns the current size of the stack
-	endrem
+	EndRem
 	Method GetSize:Int()
 		Return _stackArray.Length
-	End Method
+	EndMethod
 
 
 
-	rem
+	Rem
 		bbdoc: Grows the stack by the amount specified when the stack was created
-	endrem
+	EndRem
 	Method Grow()
 		_stackArray = _stackArray[.. _stackArray.Length + _growSize]
-	End Method
+	EndMethod
 
 
 
-	rem
+	Rem
 		bbdoc: Default constructor
-	endrem
+	EndRem
 	Method New()
 		_growSize = 1
 		_top = -1
 		_initialSize = 0
-	End Method
+	EndMethod
 
 
 
-	rem
+	Rem
 		bbdoc: Get the top object from the stack without removing it
-	endrem
+	EndRem
 	Method Peek:Object()
 		Local o:Object = Null
 
@@ -110,13 +110,13 @@ Type TStack
 		End If
 
 		Return o
-	End Method
+	EndMethod
 
 
 
-	rem
+	Rem
 		bbdoc: Remove the top object from the stack and return it
-	endrem
+	EndRem
 	Method Pop:Object()
 		Local o:Object = Null
 
@@ -124,25 +124,25 @@ Type TStack
 			o = _stackArray[_top]
 			_stackArray[_top] = Null
 			_top :- 1
-		End If
+		EndIf
 
 		Return o
-	End Method
+	EndMethod
 
 
 
-	rem
+	Rem
 		bbdoc: Add the specified object to the top of the stack
-	endrem
+	EndRem
 	Method Push (o:Object)
 		_top :+ 1
 
 		If _top + 1 > _stackArray.Length
 			Grow()
-		End If
+		EndIf
 
 		_stackArray[_top] = o
-	End Method
+	EndMethod
 
 
 
@@ -158,9 +158,9 @@ Type TStack
 			shrinkSize = _top + 1
 		Else
 			shrinkSize = _initialSize
-		End If
+		EndIf
 
 		_stackArray = _stackArray[..shrinkSize]
-	End Method
+	EndMethod
 
-End Type
+EndType
