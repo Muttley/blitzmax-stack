@@ -23,7 +23,7 @@ task build_module << {
 task run_examples (dependsOn: ['build_module', 'run_tests']) << {
 	println "Building examples...\n"
 
-	def command = "bmk makeapp -r -a -t gui -x $EXAMPLE_MAIN"
+	def command = "bmk makeapp -r -a -t console -x $EXAMPLE_MAIN"
 	print "Running command: '$command'\n"
 
 	def proc = command.execute()
