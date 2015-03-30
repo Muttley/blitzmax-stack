@@ -6,9 +6,10 @@ Include "Source/TPerson.bmx"
 
 Rem
 '
-' Create a new stack with an initial size of 2 elements, and a grow size of 3 elements.
-' This means that the third object to be pushed to the stack will cause it to grow to 5
-' elements in length; once a sixth object is pushed it will grow to 8 elements, etc.
+' Create a new stack with an initial size of 2 elements, and a grow size of 3
+' elements. This means that the third object to be pushed to the stack will
+' cause it to grow to 5 elements in length; once a sixth object is pushed it
+' will grow to 8 elements, etc.
 '
 EndRem
 Local stack:TStack = TStack.Create (2, 3)
@@ -41,7 +42,8 @@ Wend
 DisplayStackSize (stack)
 
 ' We can shrink the stack.  This will shrink it so that is the same size as
-' the current amount of stored objects or its initial size (whichever is greater)
+' the current amount of stored objects or its initial size (whichever is
+' greater)
 stack.Shrink()
 DisplayStackSize (stack)
 
