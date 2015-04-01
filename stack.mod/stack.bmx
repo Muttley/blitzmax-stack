@@ -1,6 +1,6 @@
 Rem
 '
-' Copyright (c) 2009-2013 Paul Maskelyne <muttley@muttleyville.org>.
+' Copyright (c) 2009-2015 Paul Maskelyne <muttley@muttleyville.org>.
 '
 ' All rights reserved. Use of this code is allowed under the
 ' Artistic License 2.0 terms, as specified in the LICENSE file
@@ -16,13 +16,15 @@ Rem
 End Rem
 Module muttley.stack
 
-ModuleInfo "Version: 1.0.8"
+ModuleInfo "Version: 1.0.9"
 ModuleInfo "License: Artistic License 2.0"
 ModuleInfo "Author: Paul Maskelyne (Muttley)"
-ModuleInfo "Copyright: (c) 2009-2013 Paul Maskelyne"
+ModuleInfo "Copyright: (c) 2009-2015 Paul Maskelyne"
 ModuleInfo "E-Mail: muttley@muttleyville.org"
 ModuleInfo "Website: http://www.muttleyville.org"
 
+ModuleInfo "History: 1.0.9"
+ModuleInfo "History: Throw exception on creation with invalid values"
 ModuleInfo "History: 1.0.8"
 ModuleInfo "History: Small code tidy"
 ModuleInfo "History: 1.0.7"

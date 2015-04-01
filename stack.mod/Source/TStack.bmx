@@ -1,7 +1,7 @@
 Rem
 '
-' Copyright (c) 2009-2013 Paul Maskelyne <muttley@muttleyville.org>.
-
+' Copyright (c) 2009-2015 Paul Maskelyne <muttley@muttleyville.org>.
+'
 ' All rights reserved. Use of this code is allowed under the
 ' Artistic License 2.0 terms, as specified in the LICENSE file
 ' distributed with this code, or available from
@@ -27,7 +27,6 @@ Type TStack
 	' The index of the top entry on the stack
 	Field _top:Int
 
-
 	Rem
 		bbdoc: Clears the stack
 		about: The stack will remain the same size after it has been cleared, use
@@ -40,15 +39,19 @@ Type TStack
 		_top = -1
 	EndMethod
 
-
-
 	Rem
 		bbdoc: Create a Stack with the specified initial and grow sizes
 		about: If more objects are pushed to the stack than it can hold, it will
 		automatically grow by the size you specify
 	EndRem
 	Function Create:TStack (size:Int, growSize:Int = 1)
-		If size < 0 Or growSize < 0 Then Return Null
+		If size < 0
+			Throw "Initial Stack size must be >= 0"
+		EndIf
+
+		If growSize < 1
+			Throw "Stack grow size must be >= 1"
+		EndIf
 
 		Local stack:TStack = New TStack
 
@@ -59,16 +62,12 @@ Type TStack
 		Return stack
 	EndFunction
 
-
-
 	Rem
 		bbdoc: Returns the number of objects on the stack
 	EndRem
 	Method GetCount:Int()
 		Return _top + 1
 	EndMethod
-
-
 
 	Rem
 		bbdoc: Returns the current size of the stack
@@ -77,8 +76,6 @@ Type TStack
 		Return _stackArray.Length
 	EndMethod
 
-
-
 	Rem
 		bbdoc: Grows the stack by the amount specified when the stack was created
 	EndRem
@@ -86,18 +83,14 @@ Type TStack
 		_stackArray = _stackArray[.. _stackArray.Length + _growSize]
 	EndMethod
 
-
-
 	Rem
 		bbdoc: Default constructor
 	EndRem
 	Method New()
-		_growSize = 1
 		_top = -1
+		_growSize = 1
 		_initialSize = 0
 	EndMethod
-
-
 
 	Rem
 		bbdoc: Get the top object from the stack without removing it
@@ -111,8 +104,6 @@ Type TStack
 
 		Return o
 	EndMethod
-
-
 
 	Rem
 		bbdoc: Remove the top object from the stack and return it
@@ -129,8 +120,6 @@ Type TStack
 		Return o
 	EndMethod
 
-
-
 	Rem
 		bbdoc: Add the specified object to the top of the stack
 	EndRem
@@ -143,8 +132,6 @@ Type TStack
 
 		_stackArray[_top] = o
 	EndMethod
-
-
 
 	Rem
 		bbdoc: Shrinks the stack
