@@ -1,3 +1,14 @@
+Rem
+'
+' Copyright (c) 2009-2015 Paul Maskelyne <muttley@muttleyville.org>.
+'
+' All rights reserved. Use of this code is allowed under the
+' Artistic License 2.0 terms, as specified in the LICENSE file
+' distributed with this code, or available from
+' http://www.opensource.org/licenses/artistic-license-2.0.php
+'
+EndRem
+
 Type TStackTests Extends TTest
 
 	Const INITIAL_STACK_SIZE:Int = 10
@@ -5,67 +16,62 @@ Type TStackTests Extends TTest
 
 	Field _stack:TStack
 
-
 	Method Setup() {before}
 		_stack = TStack.Create (INITIAL_STACK_SIZE, INITIAL_GROW_SIZE)
 	EndMethod
-
-
 
 	Method CanInstantiateStack() {test}
 		assertNotNull (New TStack)
 	EndMethod
 
-
-
 	Method CanCreateStackWithPositiveSize() {test}
 		assertNotNull (TStack.Create (1))
 	EndMethod
-
-
 
 	Method StackIsCreatedWithCorrectSize() {test}
 		assertEqualsI (_stack.GetSize(), INITIAL_STACK_SIZE)
 	EndMethod
 
-
-
 	Method StackIsCreatedWithCorrectGrowSize() {test}
 		assertEqualsI (_stack._growSize, 5)
 	EndMethod
 
-
-
 	Method CannotCreateStackWithNegativeSize() {test}
-		assertNull (TStack.Create (-10))
+		Local errorThrown:Int = False
+
+		Try
+			assertNull (TStack.Create (-10))
+		Catch o:Object
+			errorThrown = True
+		EndTry
+
+		assertTrue (errorThrown, "Exception not thrown when creating stack with negative size")
 	EndMethod
-
-
 
 	Method CannotCreateStackWithNegativeGrowSize() {test}
-		assertNull (TStack.Create (INITIAL_STACK_SIZE, -5))
+		Local errorThrown:Int = False
+
+		Try
+			assertNull (TStack.Create (INITIAL_STACK_SIZE, -5))
+		Catch o:Object
+			errorThrown = True
+		EndTry
+
+		assertTrue (errorThrown, "Exception not thrown when creating stack with grow size less than one")
 	EndMethod
-
-
 
 	Method CanPushObject() {test}
 		_stack.Push (New TStack)
 	EndMethod
-
-
 
 	Method CanPopObject() {test}
 		_stack.Push (New TStack)
 		assertNotNull (_stack.Pop())
 	EndMethod
 
-
-
 	Method CannotPopEmptyStack() {test}
 		assertNull (_stack.Pop())
 	EndMethod
-
-
 
 	Method CorrectObjectIsPopped() {test}
 		Local o:Object
@@ -76,8 +82,6 @@ Type TStackTests Extends TTest
 		assertEquals (o, _stack.Pop())
 	EndMethod
 
-
-
 	Method CannotOverfillStack() {test}
 		Local o:Object
 		For Local i:Int = 0 To _stack.GetSize() + 10
@@ -86,8 +90,6 @@ Type TStackTests Extends TTest
 		Next
 		assertEquals (o, _stack.Pop())
 	EndMethod
-
-
 
 	Method StackGrowsWhenNeeded() {test}
 		Local o:Object
@@ -98,8 +100,6 @@ Type TStackTests Extends TTest
 		assertTrue (INITIAL_STACK_SIZE < _stack.GetSize())
 	EndMethod
 
-
-
 	Method StackGrowsByTheCorrectAmount() {test}
 		Local o:Object
 		For Local i:Int = 0 To _stack.GetSize() + 1
@@ -109,21 +109,15 @@ Type TStackTests Extends TTest
 		assertEqualsI (INITIAL_STACK_SIZE + INITIAL_GROW_SIZE, _stack.GetSize())
 	EndMethod
 
-
-
 	Method CanPeekFromStack() {test}
 		Local o:Object = New TStack
 		_stack.Push (o)
 		assertEquals (o, _stack.Peek())
 	EndMethod
 
-
-
 	Method CannotPeekFromEmptyStack() {test}
 		assertNull (_stack.Peek())
 	EndMethod
-
-
 
 	Method ObjectsAreCorrectlyPopped() {test}
 		Local objects:TStack[] = New TStack[INITIAL_STACK_SIZE]
@@ -138,16 +132,12 @@ Type TStackTests Extends TTest
 		Next
 	EndMethod
 
-
-
 	Method CanPushToStackCreatedWithNew() {test}
 		Local myStack:TStack = New TStack
 		Local o:Object = New TStack
 		myStack.Push (o)
 		assertEquals (o, myStack.Pop())
 	EndMethod
-
-
 
 	Method CanClearStack() {test}
 		For Local i:Int = 0 Until INITIAL_STACK_SIZE
@@ -158,8 +148,6 @@ Type TStackTests Extends TTest
 			assertNull (_stack._stackArray[i])
 		Next
 	EndMethod
-
-
 
 	Method CanShrinkStack() {test}
 		For Local i:Int = 0 To INITIAL_STACK_SIZE + 10
@@ -173,14 +161,10 @@ Type TStackTests Extends TTest
 		assertEqualsI (INITIAL_STACK_SIZE, _stack.GetSize())
 	EndMethod
 
-
-
 	Method CanShrinkEmptyStack() {test}
 		Local stack:TStack = New TStack
 		stack.Shrink()
 	EndMethod
-
-
 
 	Method CanPushObjectsToAnEmptyStackThatHasBeenShrunk() {test}
 		Local stack:TStack = New TStack
@@ -189,13 +173,9 @@ Type TStackTests Extends TTest
 		assertNotNull (stack.Pop())
 	EndMethod
 
-
-
 	Method CanCountEntriesOnStack() {test}
 		_stack.GetCount()
 	EndMethod
-
-
 
 	Method CorrectEntriesCountOnStack() {test}
 		For Local i:Int = 1 To 23
